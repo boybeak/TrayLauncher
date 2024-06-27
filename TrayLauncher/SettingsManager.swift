@@ -33,7 +33,6 @@ class SettingsManager: NSObject {
             // 更新NSMenuItem的state
             let hideAppName = UserDefaults.standard.bool(forKey: UserDefaults.Keys.hideAppName)
             hideAppNameItem.state = hideAppName ? .on : .off
-            print("observeValue: hideAppNameItem state updated to \(hideAppNameItem.state == .on ? "on" : "off")")
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }

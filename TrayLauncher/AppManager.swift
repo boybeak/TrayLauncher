@@ -109,19 +109,21 @@ class AppManager {
     }
     
     func openApp(withBundleID bundleID: String) {
-        let workspace = NSWorkspace.shared
-        
-        // 尝试根据Bundle ID获取应用的URL
-        if let appURL = workspace.urlForApplication(withBundleIdentifier: bundleID) {
-            do {
-                // 尝试打开应用
-                try workspace.launchApplication(at: appURL, options: [], configuration: [:])
-                print("Application opened successfully.")
-            } catch {
-                print("Failed to open application: \(error)")
+        DispatchQueue.global().async {
+            let workspace = NSWorkspace.shared
+            
+            // 尝试根据Bundle ID获取应用的URL
+            if let appURL = workspace.urlForApplication(withBundleIdentifier: bundleID) {
+                do {
+                    // 尝试打开应用
+                    try workspace.launchApplication(at: appURL, options: [], configuration: [:])
+                    print("Application opened successfully.")
+                } catch {
+                    print("Failed to open application: \(error)")
+                }
+            } else {
+                print("No application found with bundle ID \(bundleID)")
             }
-        } else {
-            print("No application found with bundle ID \(bundleID)")
         }
     }
     
