@@ -14,7 +14,9 @@ struct TrayLauncherApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var app: AppDelegate
     
     var body: some Scene {
-        Settings {}
+        WindowGroup {
+            ContentView()
+        }
     }
 }
 

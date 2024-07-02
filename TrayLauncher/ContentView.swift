@@ -19,6 +19,12 @@ struct ContentView: View {
             .frame(width: 320, height: 320)
         }
         .frame(width: 320, height: 320)
+        .onDrop(of: [.text, .plainText], isTargeted: nil) { providers in
+            
+            print("onDrop providers=\(providers)")
+            
+            return true
+        }
     }
 }
 
